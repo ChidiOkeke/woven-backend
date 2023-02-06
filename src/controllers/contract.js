@@ -1,4 +1,4 @@
-import Contract from "../models/contract.js";
+import { Contract } from "../models/index.js";
 import httpStatus from "http-status";
 import { Errors } from "../utils/errors.js";
 import { pick } from "../utils/helpers.js";
@@ -18,14 +18,17 @@ const getContract = async (req, res) => {
 
     const userContract = await Contract.findOne({ where: { id: paramsId } });
 
-    if (userContract.client_id !== userProfile.id && userContract.contractor_id !== userProfile.id) {
+    if (
+      userContract.client_id !== userProfile.id &&
+      userContract.contractor_id !== userProfile.id
+    ) {
       return res
         .status(httpStatus.UNAUTHORIZED)
         .json({ error: Errors.UNAUTHORIZED });
     }
 
     return res.status(httpStatus.OK).json({
-        userContract,
+      userContract,
     });
   } catch (error) {
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
@@ -35,24 +38,29 @@ const getContract = async (req, res) => {
 };
 
 const getContracts = async (req, res) => {
+  const userProfile = req.user;
 
-    const userProfile = req.user;
-    console.log(userProfile);
-  
-    try {
-        
-      const userContracts = await Contract.findAndCountAll({where: {status: ["new", "in_progress"], [Op.or]: [{ client_id: userProfile.id }, { contractor_id: userProfile.id }]}})
-        
-      return res.status(httpStatus.OK).json({
-          userContracts,
-      });
-    } catch (error) {
-        console.log(error);
-      return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-        error,
-      });
-    }
-  };
+  try {
+    const userContracts = await Contract.findAndCountAll({
+      where: {
+        status: ["new", "in_progress"],
+        [Op.or]: [
+          { client_id: userProfile.id },
+          { contractor_id: userProfile.id },
+        ],
+      },
+    });
+
+    return res.status(httpStatus.OK).json({
+      userContracts,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+      error,
+    });
+  }
+};
 
 const createContract = async (req, res) => {
   try {

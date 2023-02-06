@@ -15,7 +15,7 @@ const defaultRoutes = [
     route: profileRoute,
   },
   {
-    path: "/job",
+    path: "/jobs",
     route: jobRoute,
   },
 ];

@@ -1,4 +1,4 @@
-import Profile from "../models/profile.js";
+import { Profile } from "../models/index.js";
 import { pick } from "../utils/helpers.js";
 import httpStatus from "http-status";
 import { Errors } from "../utils/errors.js";

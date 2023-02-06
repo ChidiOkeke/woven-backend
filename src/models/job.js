@@ -18,8 +18,15 @@ const Job = sequelize.define("Job", {
     allowNull: false,
     type: Sequelize.STRING,
   },
-  
   contract_id: {
+    allowNull: false,
+    type: Sequelize.UUID,
+  },
+  client_id: {
+    allowNull: false,
+    type: Sequelize.UUID,
+  },
+  contractor_id: {
     allowNull: false,
     type: Sequelize.UUID,
   },

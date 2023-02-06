@@ -21,6 +21,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
       },
+      client_id: {
+        allowNull: false,
+        type: Sequelize.UUID,
+      },
+      contractor_id: {
+        allowNull: false,
+        type: Sequelize.UUID,
+      },
       status: {
         allowNull: false,
         type: Sequelize.ENUM("paid", "unpaid"),
