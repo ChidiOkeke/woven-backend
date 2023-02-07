@@ -11,9 +11,7 @@ try {
   const server = express();
   server.use(bodyParser.json());
   server.use(router);
-
-  // sequelize.sync();
-
+  
   const port = process.env.SERVER_PORT || 3000;
 
   server.listen(port);

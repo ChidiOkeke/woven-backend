@@ -122,13 +122,14 @@ const payForJob = async (req, res) => {
     }
 
     if (
-      userProfile.id !== client.id &&
-      userProfile.profile_type !== client.profile_type
+      userProfile.id !== client.id ||
+      userProfile.profile_type !== client.profile_type 
     ) {
       return res.status(httpStatus.BAD_REQUEST).json({
         error: Errors.VALIDATION_FAILS,
       });
     }
+
 
     if (Number(client.balance) < Number(job.amount)) {
       return res.status(httpStatus.BAD_REQUEST).json({

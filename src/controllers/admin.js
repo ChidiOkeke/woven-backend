@@ -63,7 +63,7 @@ const getBestClient = async (req, res) => {
   try {
     const startDate = req.query.start;
     const endDate = req.query.end;
-    let limit = req.query.limit;
+    let limit = parseInt(req.query.limit);
 
     if (!limit) {
       limit = DEFAULT_LIMIT;
