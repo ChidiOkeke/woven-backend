@@ -39,4 +39,8 @@ export const Errors = {
     code: "INSUFFICIENT_FUNDS",
     message: "Insufficient funds",
   },
+  DUPLICATE_PAYMENT: {
+    code: "DUPLICATE_PAYMENT",
+    message: "Duplicate payment",
+  },
 };

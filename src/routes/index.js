@@ -2,6 +2,7 @@ import { Router } from "express";
 import contractRoute from "./contract.js";
 import profileRoute from "./profile.js";
 import jobRoute from "./job.js";
+import adminRoute from "./admin.js";
 
 const router = Router();
 
@@ -17,6 +18,10 @@ const defaultRoutes = [
   {
     path: "/jobs",
     route: jobRoute,
+  },
+  {
+    path: "/admin",
+    route: adminRoute,
   },
 ];
 
