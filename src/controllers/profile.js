@@ -9,6 +9,7 @@ const createProfile = async (req, res) => {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       profile_type: Yup.string().required(),
+      profession: Yup.string().required(),
       balance: Yup.number().required(),
     });
 
@@ -18,7 +19,12 @@ const createProfile = async (req, res) => {
         .json({ error: Errors.VALIDATION_FAILS });
     }
 
-    const body = pick(req.body, ["name", "profile_type", "balance"]);
+    const body = pick(req.body, [
+      "name",
+      "profession",
+      "profile_type",
+      "balance",
+    ]);
 
     if (!body) {
       return res.status(httpStatus.BAD_REQUEST).json({

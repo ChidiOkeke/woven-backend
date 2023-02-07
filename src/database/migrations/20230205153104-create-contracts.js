@@ -13,6 +13,7 @@ module.exports = {
       status: {
         allowNull: false,
         type: Sequelize.ENUM("new", "in_progress", "terminated"),
+        defaultValue: "new",
       },
       client_id: {
         allowNull: false,

@@ -14,6 +14,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      profession: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       profile_type: {
         allowNull: false,
         type: Sequelize.ENUM("client", "contractor"),

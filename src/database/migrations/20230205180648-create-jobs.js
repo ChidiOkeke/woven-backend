@@ -32,10 +32,15 @@ module.exports = {
       status: {
         allowNull: false,
         type: Sequelize.ENUM("paid", "unpaid"),
+        defaultValue: "unpaid",
       },
       amount: {
         allowNull: false,
         type: Sequelize.DECIMAL(19, 2),
+      },
+      paid_date: {
+        allowNull: true,
+        type: Sequelize.DATE,
       },
       createdAt: {
         allowNull: false,

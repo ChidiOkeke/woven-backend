@@ -55,7 +55,6 @@ const getContracts = async (req, res) => {
       userContracts,
     });
   } catch (error) {
-    console.log(error);
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       error,
     });
